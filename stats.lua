@@ -21,7 +21,7 @@ local o = {
     alpha = "11",
     nl = "\\N",
     prop_indent = "\\h\\h\\h\\h\\h",
-    kv_sep = "\\h\\h"             -- key:<kv_space>value
+    kv_sep = "\\h\\h"             -- key:<kv_sep>value
 }
 read_options(o)
 
@@ -44,6 +44,7 @@ end
 
 
 function add_file(s)
+    s.file = ""
     local fn = mp.get_property_osd("filename")
     s.file = s.file .. b("File:") .. o.kv_sep .. no_ASS(fn)
     
@@ -57,6 +58,7 @@ end
 
 
 function add_video(s)
+    s.video = ""
     local r = mp.get_property_osd("video")
     if not r or r == "no" or r == "" then
         return
@@ -84,6 +86,7 @@ end
 
 
 function add_audio(s)
+    s.audio = ""
     local r = mp.get_property_osd("audio-codec")
     if not r or r == "no" or r == "" then
         return
