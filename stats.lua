@@ -1,4 +1,4 @@
--- Display some stats
+-- Display some stats.
 --
 -- You can invoke the script with "i" by default or create a different key
 -- binding in input.conf using "<yourkey> script_binding stats".
@@ -14,9 +14,9 @@ require 'mp.options'
 
 local o = {
     font = "Source Sans Pro",
-    font_size = "11",
+    font_size = 11,
     font_color = "FFFFFF",
-    border_size = "1",
+    border_size = 1,
     border_color = "262626",
     alpha = "11",
     nl = "\\N",
@@ -104,9 +104,9 @@ end
 function add_header(s)
     s.header = set_ASS(true)
     s.header = s.header .. 
-        "{\\fs" .. o.font_size .. "}{\\fn" .. o.font .. 
-        "}{\\bord" .. o.border_size .. "}{\\3c&H" .. o.border_color .. 
-        "&}{\\1c&H" .. o.font_color .. "&}{\\alpha&H" .. o.alpha .. "}"
+        string.format("{\\fs%d}{\\fn%s}{\\bord%d}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
+                        o.font_size, o.font, o.border_size, 
+                        o.border_color, o.font_color, o.alpha)
 end
 
 
