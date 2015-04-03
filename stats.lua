@@ -1,6 +1,7 @@
 -- Display some stats
 -- Default appearance: http://a.pomf.se/paphjk.png
--- The look is configurable through a config file
+-- The look is configurable through a config file `lua-settings/stats.conf` in
+-- your mpv directory.
 -- Please note: not every property is always available and therefore not always
 -- visible
 
@@ -148,4 +149,4 @@ function u(t)
 end
 
 
-mp.add_key_binding("i", "display_stats", main)
+mp.add_key_binding("i", "stats", main)
