@@ -100,7 +100,10 @@ end
 
 function add_header(s)
     s.header = set_ASS(true)
-    s.header = s.header .. "{\\fs" .. o.font_size .. "}{\\fn" .. o.font .. "}{\\bord" .. o.border_size .. "}{\\3c&H" .. o.border_color .. "&}{\\1c&H" .. o.font_color .. "&}{\\alpha&H" .. o.alpha .. "}"
+    s.header = s.header .. 
+        "{\\fs" .. o.font_size .. "}{\\fn" .. o.font .. 
+        "}{\\bord" .. o.border_size .. "}{\\3c&H" .. o.border_color .. 
+        "&}{\\1c&H" .. o.font_color .. "&}{\\alpha&H" .. o.alpha .. "}"
 end
 
 
