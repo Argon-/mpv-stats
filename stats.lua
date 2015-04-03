@@ -111,7 +111,7 @@ end
 function append_property(s, sec, prop, prefix, suffix)
     local ret = mp.get_property_osd(prop)
     if ret == nil or ret == "" then
-        return ""
+        return
     end
 
     local suf = suffix or ""
@@ -125,7 +125,7 @@ end
 function append_property_inline(s, sec, prop, prefix, suffix, no_prefix_markup, no_prefix_sep, no_indent)
     local ret = mp.get_property_osd(prop)
     if ret == nil or ret == "" then
-        return ""
+        return
     end
 
     local suf = suffix or ""
