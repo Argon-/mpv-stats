@@ -149,4 +149,4 @@ function u(t)
 end
 
 
-mp.add_key_binding("i", "stats", main)
+mp.add_key_binding("i", "stats", main, {repeatable=true})
