@@ -1,9 +1,14 @@
 -- Display some stats
+--
+-- You can invoke the script with "i" by default or create a different key
+-- binding in input.conf using "<yourkey> script_binding stats".
+--
 -- Default appearance: http://a.pomf.se/paphjk.png
--- The look is configurable through a config file `lua-settings/stats.conf` in
--- your mpv directory.
+-- The style is configurable through a config file named `lua-settings/stats.conf`
+-- located in your mpv directory.
+--
 -- Please note: not every property is always available and therefore not always
--- visible
+-- visible.
 
 require 'mp.options'
 
