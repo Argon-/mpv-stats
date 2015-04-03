@@ -102,11 +102,9 @@ end
 
 
 function add_header(s)
-    s.header = set_ASS(true)
-    s.header = s.header .. 
-        string.format("{\\fs%d}{\\fn%s}{\\bord%d}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
-                        o.font_size, o.font, o.border_size, 
-                        o.border_color, o.font_color, o.alpha)
+    s.header = string.format("%s{\\fs%d}{\\fn%s}{\\bord%d}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
+                    set_ASS(true), o.font_size, o.font, o.border_size, 
+                    o.border_color, o.font_color, o.alpha)
 end
 
 
