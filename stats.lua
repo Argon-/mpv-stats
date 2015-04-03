@@ -45,7 +45,7 @@ end
 
 function add_file(s)
     local fn = mp.get_property_osd("filename")
-    s.file = s.file .. b("File:") .. o.kv_sep .. set_ASS(false) .. fn .. set_ASS(true)
+    s.file = s.file .. b("File:") .. o.kv_sep .. no_ASS(fn)
     
     append_property(s, "file", "metadata/title", "Title:")
     append_property(s, "file", "chapter", "Chapter:")
@@ -62,7 +62,7 @@ function add_video(s)
         return
     end
     local fn = mp.get_property_osd("video-codec")
-    s.video = s.video .. b("Video:") .. o.kv_sep .. set_ASS(false) .. fn .. set_ASS(true)
+    s.video = s.video .. b("Video:") .. o.kv_sep .. no_ASS(fn)
     
     append_property(s, "video", "avsync", "A-V:")
     append_property(s, "video", "drop-frame-count", "Dropped:")
@@ -88,7 +88,7 @@ function add_audio(s)
     if not r or r == "no" or r == "" then
         return
     end
-    s.audio = s.audio .. b("Audio:") .. o.kv_sep .. set_ASS(false) .. r .. set_ASS(true)
+    s.audio = s.audio .. b("Audio:") .. o.kv_sep .. no_ASS(r)
 
     append_property(s, "audio", "audio-samplerate", "Sample Rate:")
     append_property(s, "audio", "audio-channels", "Channels:")
@@ -104,16 +104,6 @@ function add_header(s)
 end
 
 
-function set_ASS(b)
-    return mp.get_property_osd("osd-ass-cc/" .. (b and "0" or "1"))
-end
-
-
-function join_stats(s)
-    return s.header .. s.file .. s.video .. s.audio
-end
-
-
 function append_property(s, sec, prop, prefix, suffix)
     local ret = mp.get_property_osd(prop)
     if ret == nil or ret == "" then
@@ -123,7 +113,7 @@ function append_property(s, sec, prop, prefix, suffix)
     local suf = suffix or ""
     local desc = prefix or ""
     desc = no_prefix_markup and desc or b(desc)
-    s[sec] = s[sec] .. o.nl .. o.prop_indent .. b(desc) .. o.kv_sep .. set_ASS(false) .. ret .. set_ASS(true) .. suf
+    s[sec] = s[sec] .. o.nl .. o.prop_indent .. b(desc) .. o.kv_sep .. no_ASS(ret) .. suf
 end
 
 
@@ -139,7 +129,22 @@ function append_property_inline(s, sec, prop, prefix, suffix, no_prefix_markup, 
     local indent = no_indent and "" or o.kv_sep
     local desc = prefix or ""
     desc = no_prefix_markup and desc or b(desc)
-    s[sec] = s[sec] .. indent .. desc .. prefix_sep .. set_ASS(false) .. ret .. set_ASS(true) .. suf
+    s[sec] = s[sec] .. indent .. desc .. prefix_sep .. no_ASS(ret) .. suf
+end
+
+
+function no_ASS(t)
+    return set_ASS(false) .. t .. set_ASS(true)
+end
+
+
+function set_ASS(b)
+    return mp.get_property_osd("osd-ass-cc/" .. (b and "0" or "1"))
+end
+
+
+function join_stats(s)
+    return s.header .. s.file .. s.video .. s.audio
 end
 
 
