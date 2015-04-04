@@ -21,7 +21,8 @@ local o = {
     alpha = "11",
     nl = "\\N",
     prop_indent = "\\h\\h\\h\\h\\h",
-    kv_sep = "\\h\\h"             -- key:<kv_sep>value
+    kv_sep = "\\h\\h",             -- key<kv_sep>value
+    duration = 3
 }
 read_options(o)
 
@@ -39,7 +40,7 @@ function main()
     add_video(stats)
     add_audio(stats)
 
-    mp.osd_message(join_stats(stats))
+    mp.osd_message(join_stats(stats), o.duration)
 end
 
 
