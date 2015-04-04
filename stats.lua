@@ -16,7 +16,7 @@ local o = {
     font = "Source Sans Pro",
     font_size = 11,
     font_color = "FFFFFF",
-    border_size = 1,
+    border_size = 1.0,
     border_color = "262626",
     alpha = "11",
     nl = "\\N",
@@ -103,7 +103,7 @@ end
 
 
 function add_header(s)
-    s.header = string.format("%s{\\fs%d}{\\fn%s}{\\bord%d}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
+    s.header = string.format("%s{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
                     set_ASS(true), o.font_size, o.font, o.border_size, 
                     o.border_color, o.font_color, o.alpha)
 end
