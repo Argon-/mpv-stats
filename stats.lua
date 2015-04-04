@@ -13,16 +13,26 @@
 require 'mp.options'
 
 local o = {
+    duration = 3,
+    -- text formatting
     font = "Source Sans Pro",
     font_size = 11,
     font_color = "FFFFFF",
     border_size = 1.0,
     border_color = "262626",
+    shadow_x_offset = 0.0,
+    shadow_y_offset = 0.0,
+    shadow_color = "000000",
     alpha = "11",
+    -- indentation
     nl = "\\N",
     prop_indent = "\\h\\h\\h\\h\\h",
-    kv_sep = "\\h\\h",             -- key<kv_sep>value
-    duration = 3
+    kv_sep = "\\h\\h",  -- key<kv_sep>value
+
+    -- Custom header for ASS tags to format the text output.
+    -- Specifying this will ignore the text formatting values above and just
+    -- use this string instead.
+    custom_header = ""
 }
 read_options(o)
 
@@ -103,9 +113,15 @@ end
 
 
 function add_header(s)
-    s.header = string.format("%s{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}{\\alpha&H%s}", 
-                    set_ASS(true), o.font_size, o.font, o.border_size, 
-                    o.border_color, o.font_color, o.alpha)
+    if o.custom_header and o.custom_header ~= "" then
+        s.header = set_ASS(true) .. o.custom_header
+    else
+        s.header = string.format([[%s{\\fs%d}{\\fn%s}{\\bord%f}{\\3c&H%s&}{\\1c&H%s&}
+                                 {\\alpha&H%s&}{\\xshad%f}{\\yshad%f}{\\4c&H%s&}]],
+                        set_ASS(true), o.font_size, o.font, o.border_size, 
+                        o.border_color, o.font_color, o.alpha, o.shadow_x_offset, 
+                        o.shadow_y_offset, o.shadow_color)
+    end
 end
 
 
