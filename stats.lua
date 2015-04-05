@@ -61,8 +61,9 @@ function add_file(s)
     
     append_property(s, "file", "metadata/title", "Title:")
     append_property(s, "file", "chapter", "Chapter:")
-    append_property(s, "file", "cache-used", "Cache:")
-    append_property_inline(s, "file", "demuxer-cache-duration", "+", " sec", true, true)
+    if append_property(s, "file", "cache-used", "Cache:") then
+        append_property_inline(s, "file", "demuxer-cache-duration", "+", " sec", true, true)
+    end
 
     s.file = s.file .. o.nl .. o.nl
 end
@@ -78,12 +79,15 @@ function add_video(s)
     s.video = s.video .. b("Video:") .. o.kv_sep .. no_ASS(fn)
     
     append_property(s, "video", "avsync", "A-V:")
-    append_property(s, "video", "drop-frame-count", "Dropped:")
-    append_property_inline(s, "video", "vo-drop-frame-count", "   VO:")
-    append_property(s, "video", "fps", "FPS:", " (specified)")
-    append_property_inline(s, "video", "estimated-vf-fps", "", " (estimated)", true, true)
-    append_property(s, "video", "video-params/w", "Native Resolution:")
-    append_property_inline(s, "video", "video-params/h", " x ", "", true, true, true)
+    if append_property(s, "video", "drop-frame-count", "Dropped:") then
+        append_property_inline(s, "video", "vo-drop-frame-count", "   VO:")
+    end
+    if append_property(s, "video", "fps", "FPS:", " (specified)") then
+        append_property_inline(s, "video", "estimated-vf-fps", "", " (estimated)", true, true)
+    end
+    if append_property(s, "video", "video-params/w", "Native Resolution:") then
+        append_property_inline(s, "video", "video-params/h", " x ", "", true, true, true)
+    end
     append_property(s, "video", "window-scale", "Window Scale:")
     append_property(s, "video", "video-params/aspect", "Aspect Ratio:")
     append_property(s, "video", "video-params/pixelformat", "Pixel format:")
@@ -128,13 +132,14 @@ end
 function append_property(s, sec, prop, prefix, suffix)
     local ret = mp.get_property_osd(prop)
     if ret == nil or ret == "" then
-        return
+        return false
     end
 
     local suf = suffix or ""
     local desc = prefix or ""
     desc = no_prefix_markup and desc or b(desc)
     s[sec] = s[sec] .. o.nl .. o.prop_indent .. b(desc) .. o.kv_sep .. no_ASS(ret) .. suf
+    return true
 end
 
 
@@ -142,7 +147,7 @@ end
 function append_property_inline(s, sec, prop, prefix, suffix, no_prefix_markup, no_prefix_sep, no_indent)
     local ret = mp.get_property_osd(prop)
     if ret == nil or ret == "" then
-        return
+        return false
     end
 
     local suf = suffix or ""
@@ -151,6 +156,7 @@ function append_property_inline(s, sec, prop, prefix, suffix, no_prefix_markup, 
     local desc = prefix or ""
     desc = no_prefix_markup and desc or b(desc)
     s[sec] = s[sec] .. indent .. desc .. prefix_sep .. no_ASS(ret) .. suf
+    return true
 end
 
 
