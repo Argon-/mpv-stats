@@ -2,6 +2,8 @@ mpv-stats
 ---------
 Display statistics for the currently played file in mpv.
 
+![Default](https://cloud.githubusercontent.com/assets/540920/7099840/94fa385c-e001-11e4-9f35-14aee8d74514.png)
+
 You can change the font formatting by creating a file `stats.conf` in a folder
 named `lua-settings` within your mpv folder.
 Please refer to the `o` table within the script for possible option names and 
