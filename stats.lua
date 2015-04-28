@@ -12,9 +12,12 @@
 
 require 'mp.options'
 
+-- options
 local o = {
+    ass_formatting = true,
     duration = 3,
-    -- text formatting
+    
+    -- text style
     font = "Source Sans Pro",
     font_size = 11,
     font_color = "FFFFFF",
@@ -24,15 +27,25 @@ local o = {
     shadow_y_offset = 0.0,
     shadow_color = "000000",
     alpha = "11",
-    -- indentation
+
+    -- Custom header for ASS tags to style the text output.
+    -- Specifying this will ignore the text style values above and just
+    -- use this string instead.
+    custom_header = "",
+
+    -- text formatting
+    -- with ASS
     nl = "\\N",
     prop_indent = "\\h\\h\\h\\h\\h",
-    kv_sep = "\\h\\h",  -- key<kv_sep>value
-
-    -- Custom header for ASS tags to format the text output.
-    -- Specifying this will ignore the text formatting values above and just
-    -- use this string instead.
-    custom_header = ""
+    kv_sep = "\\h\\h",
+    b1 = "{\\b1}",
+    b0 = "{\\b0}",
+    -- without ASS
+    no_ass_nl = "\n",
+    no_ass_prop_indent = "\t",
+    no_ass_kv_sep = " ",
+    no_ass_b1 = "",
+    no_ass_b0 = "",
 }
 read_options(o)
 
@@ -44,7 +57,16 @@ function main()
         video = "",
         audio = ""
     }
-    
+
+    o.ass_formatting = o.ass_formatting and has_vo_window()
+    if not o.ass_formatting then
+        o.nl = o.no_ass_nl
+        o.prop_indent = o.no_ass_prop_indent
+        o.kv_sep = o.no_ass_kv_sep
+        o.b1 = o.no_ass_b1
+        o.b0 = o.no_ass_b0
+    end
+
     add_header(stats)
     add_file(stats)
     add_video(stats)
@@ -56,8 +78,8 @@ end
 
 function add_file(s)
     s.file = ""
-    local fn = mp.get_property_osd("filename")
-    s.file = s.file .. b("File:") .. o.kv_sep .. no_ASS(fn)
+    local r = mp.get_property_osd("filename")
+    s.file = s.file .. b("File:") .. o.kv_sep .. no_ASS(r)
     
     append_property(s, "file", "metadata/title", "Title:")
     append_property(s, "file", "chapter", "Chapter:")
@@ -71,12 +93,11 @@ end
 
 function add_video(s)
     s.video = ""
-    local r = mp.get_property_osd("video")
-    if not r or r == "no" or r == "" then
+    if not has_video() then
         return
     end
-    local fn = mp.get_property_osd("video-codec")
-    s.video = s.video .. b("Video:") .. o.kv_sep .. no_ASS(fn)
+    local r = mp.get_property_osd("video-codec")
+    s.video = s.video .. b("Video:") .. o.kv_sep .. no_ASS(r)
     
     append_property(s, "video", "avsync", "A-V:")
     if append_property(s, "video", "drop-frame-count", "Dropped:") then
@@ -102,10 +123,10 @@ end
 
 function add_audio(s)
     s.audio = ""
-    local r = mp.get_property_osd("audio-codec")
-    if not r or r == "no" or r == "" then
+    if not has_audio() then
         return
     end
+    local r = mp.get_property_osd("audio-codec")
     s.audio = s.audio .. b("Audio:") .. o.kv_sep .. no_ASS(r)
 
     append_property(s, "audio", "audio-samplerate", "Sample Rate:")
@@ -117,6 +138,10 @@ end
 
 
 function add_header(s)
+    if not o.ass_formatting then
+        s.header = ""
+        return
+    end
     if o.custom_header and o.custom_header ~= "" then
         s.header = set_ASS(true) .. o.custom_header
     else
@@ -166,6 +191,9 @@ end
 
 
 function set_ASS(b)
+    if not o.ass_formatting then
+        return ""
+    end
     return mp.get_property_osd("osd-ass-cc/" .. (b and "0" or "1"))
 end
 
@@ -175,15 +203,27 @@ function join_stats(s)
 end
 
 
+function has_vo_window()
+    return mp.get_property("vo-configured") == "yes"
+end
+
+
+function has_video()
+    local r = mp.get_property("video")
+    return r ~= nil and r ~= "no" and r ~= ""
+end
+
+
+function has_audio()
+    local r = mp.get_property("audio")
+    return r ~= nil and r ~= "no" and r ~= ""
+end
+
+
 function b(t)
-    return "{\\b1}" .. t .. "{\\b0}"
+    return o.b1 .. t .. o.b0
 end
-function i(t)
-    return "{\\i1}" .. t .. "{\\i0}"
-end
-function u(t)
-    return "{\\u1}" .. t .. "{\\u0}"
-end
+
 
 
 mp.add_key_binding("i", mp.get_script_name(), main, {repeatable=true})
