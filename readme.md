@@ -35,3 +35,5 @@ A more sophisticated example:
     border_color=FFFFFF
     alpha=70
     duration=5
+    debug=yes
+
