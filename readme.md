@@ -18,8 +18,8 @@ Customization
 -------------
 You can configure some settings by creating a file `stats.conf` in a folder
 named `lua-settings` within your mpv folder.
-Please refer to the `o` table within the script for possible option names and 
-consult [mpv manual](http://mpv.io/manual/master/#config-syntax) regarding 
+Please refer to the `o` table within the script for possible option names and
+consult [mpv manual](http://mpv.io/manual/master/#config-syntax) regarding
 configuration syntax.
 
 To change e.g. the text display duration your `stats.conf` may look like:
@@ -37,3 +37,5 @@ A more sophisticated example:
     duration=5
     debug=yes
 
+Note: colors are given as hexadecimal values and use
+[ASS tag](http://docs.aegisub.org/3.2/ASS_Tags/#\c) order: BBGGRR (blue green red).
