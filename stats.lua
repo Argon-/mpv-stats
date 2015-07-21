@@ -45,8 +45,8 @@ local o = {
     no_ass_nl = "\n",
     no_ass_prop_indent = "\t",
     no_ass_kv_sep = " ",
-    no_ass_b1 = "",
-    no_ass_b0 = "",
+    no_ass_b1 = "\027[1m",
+    no_ass_b0 = "\027[0m",
 }
 options.read_options(o)
 
