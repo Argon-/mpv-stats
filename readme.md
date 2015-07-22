@@ -2,7 +2,7 @@ mpv-stats
 ---------
 Display statistics for the currently played file in mpv.
 
-![Default](https://cloud.githubusercontent.com/assets/540920/7099840/94fa385c-e001-11e4-9f35-14aee8d74514.png)
+![Default](https://cloud.githubusercontent.com/assets/540920/8833849/3249999a-30b1-11e5-9e63-53aaf777d9ea.jpg)
 
 Usage
 -----
