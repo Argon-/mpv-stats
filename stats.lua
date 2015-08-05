@@ -120,6 +120,7 @@ function add_video(s)
         append_property(s, sec, "estimated-vf-fps",
                         {prefix="FPS:", suffix=" (estimated)"})
     end
+    append_property(s, sec, "display-fps", {suffix=" (display)", nl="", indent=""})
     if append_property(s, sec, "video-params/w", {prefix="Native Resolution:"}) then
         append_property(s, sec, "video-params/h",
                         {prefix="x", nl="", indent=" ", prefix_sep=" ", no_prefix_markup=true})
