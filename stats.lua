@@ -16,6 +16,7 @@ local o = {
     ass_formatting = true,
     duration = 3,
     debug = false,
+    key_binding = "i",
 
     -- Text style
     font = "Source Sans Pro",
@@ -260,4 +261,4 @@ end
 
 
 
-mp.add_key_binding("i", mp.get_script_name(), main, {repeatable=true})
+mp.add_key_binding(o.key_binding, mp.get_script_name(), main, {repeatable=true})
