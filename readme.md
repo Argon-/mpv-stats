@@ -12,8 +12,11 @@ to autoload the script. Alternatively load it with `--script=<path>`.
 The script is binding itself to `i` and `I` (however, not overriding your own bindings)
 and can therefore be invoked with these keys. `i` will show the stats once while
 `I` is toggling them.
-You can create different bindings either by using the `script_binding` input
-command (in `input.conf`) or by customizing this script (see below).
+You can set different bindings either by customizing this script (see below) or
+by using the `script_binding` input command (in `input.conf`), e.g.:
+
+    e script_binding stats/display_stats
+    E script_binding stats/display_stats_toggle
 
 Customization
 -------------
@@ -30,6 +33,7 @@ To change e.g. the text display duration your `stats.conf` may look like:
 A more sophisticated example:
 
     key_oneshot=e
+    key_toggle=E
     font=Arial
     font_size=9
     font_color=262626
