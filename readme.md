@@ -1,27 +1,32 @@
 mpv-stats
----------
+=========
 Display statistics for the currently played file in mpv.
 
-![Default](https://cloud.githubusercontent.com/assets/540920/8833849/3249999a-30b1-11e5-9e63-53aaf777d9ea.jpg)
+![Default](https://cloud.githubusercontent.com/assets/540920/16775632/85da9aa6-489c-11e6-8333-176755e64892.jpg)
+
 
 Usage
------
+=====
 Place `stats.lua` in your `~/.config/mpv/scripts/` or `~/.mpv/scripts/` folder
-to autoload the script. Alternatively load it with `--script=<path>`.
+to autoload the script.
 
-The script is binding itself to `i` and `I` (however, not overriding your own bindings)
-and can therefore be invoked with these keys. `i` will show the stats once while
-`I` is toggling them.
+The script is binding itself to `i` and `I` (however, not overriding your own
+bindings) and can therefore be invoked by pressing these keys.
+`i` will show the stats once while `I` is toggling them.
+
 You can set different bindings either by customizing this script (see below) or
 by using the `script_binding` input command (in `input.conf`), e.g.:
 
     e script_binding stats/display_stats
     E script_binding stats/display_stats_toggle
 
+By default *Source Sans Pro* is used as font. [You can download it here](https://github.com/adobe-fonts/source-sans-pro).
+
+
 Customization
--------------
-You can configure settings by creating a file called `stats.conf` in a folder
-named `lua-settings` within your mpv config folder.
+=============
+You can configure various settings by creating a file called `stats.conf` in a folder
+named `lua-settings` within your mpv config folder (where your `mpv.conf` is in).
 Please refer to the `o` table within the script for possible option names and
 consult [mpv manual](http://mpv.io/manual/master/#config-syntax) regarding
 configuration syntax.
@@ -34,13 +39,55 @@ A more sophisticated example:
 
     key_oneshot=e
     key_toggle=E
+    plot_graphs=no
+    duration=5
     font=Arial
-    font_size=9
+    font_mono=Monospaced
+    font_size=8
     font_color=262626
     border_size=0.5
     border_color=FFFFFF
-    alpha=70
-    duration=5
 
 Note: colors are given as hexadecimal values and use
 [ASS tag](http://docs.aegisub.org/3.2/ASS_Tags/#\c) order: BBGGRR (blue green red).
+
+
+F.A.Q.
+======
+
+### Requirements
+
+This script requires mpv version **18.0** or above.  
+An older version (see [Releases](https://github.com/Argon-/mpv-stats/releases))
+can be used with a minimum required mpv version of 0.9.3.
+
+There are no further/external dependencies.
+
+### Why is there red color around my timing values?
+
+This means your hardware can't render/preset/upload enough frames per second
+for your display's refresh rate. This is only relevant when using
+[display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or
+[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation).
+
+Turn it off by setting `timing_warning=no` (see [Customization](#customization)).
+
+### How to get graphs?
+
+Graphs are enabled by default. 
+Please note that they are only shown when stats are toggled.
+
+Turn them off with `plot_graphs=no` (see [Customization](#customization)).
+
+### The graph's position is jumping
+
+Please use a font with monospaced digits.
+The default font does meet this requirement. Either download it (see [Usage](#usage))
+or set your own with `font_mono` (see [Customization](#customization)).  
+Note that `font` does not need to be a monospaced font.
+
+### Why does the layout change when showing graphs?
+
+Long story short: there can't be text behind the graph drawings.
+[(Why)](https://github.com/libass/libass/issues/230)
+
