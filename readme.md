@@ -63,14 +63,17 @@ can be used with a minimum required mpv version of 0.9.3.
 
 There are no further/external dependencies.
 
-### Why is there red color around my timing values?
+### Why are my timing values colored?
 
-This means your hardware can't render/preset/upload enough frames per second
+**Red**: your hardware can't render/present/upload enough frames per second
 for your display's refresh rate. This is only relevant when using
 [display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or
-[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation).
+[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation).  
+**Yellow**: your hardware needs more than 85% of the time to render/present/upload. 
+This is merely a warning.
 
-Turn it off by setting `timing_warning=no` (see [Customization](#customization)).
+Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
+Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
 ### How to get graphs?
 
