@@ -75,6 +75,11 @@ This is merely a warning.
 Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
 Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
+### Can I get a sum of all three timing values?
+
+Yes, use `timing_total=yes` to add an additional line (see [Customization](#customization)) 
+showing the values summed up.
+
 ### How to get graphs?
 
 Graphs are enabled by default. 
