@@ -40,13 +40,12 @@ A more sophisticated example:
     key_oneshot=e
     key_toggle=E
     plot_graphs=no
-    duration=5
+    timing_total=yes
     font=Arial
     font_mono=Monospaced
     font_size=8
     font_color=262626
     border_size=0.5
-    border_color=FFFFFF
 
 Note: colors are given as hexadecimal values and use
 [ASS tag](http://docs.aegisub.org/3.2/ASS_Tags/#\c) order: BBGGRR (blue green red).
@@ -77,8 +76,8 @@ Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
 ### Can I get a sum of all three timing values?
 
-Yes, use `timing_total=yes` to add an additional line (see [Customization](#customization)) 
-showing the values summed up.
+Yes, use `timing_total=yes` to add an additional line showing the values 
+summed up (see [Customization](#customization)).
 
 ### How to get graphs?
 
