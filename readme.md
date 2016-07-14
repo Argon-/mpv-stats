@@ -23,34 +23,6 @@ by using the `script_binding` input command (in `input.conf`), e.g.:
 By default *Source Sans Pro* is used as font. [You can download it here](https://github.com/adobe-fonts/source-sans-pro).
 
 
-Customization
-=============
-You can configure various settings by creating a file called `stats.conf` in a folder
-named `lua-settings` within your mpv config folder (where your `mpv.conf` is in).
-Please refer to the `o` table within the script for possible option names and
-consult [mpv manual](http://mpv.io/manual/master/#config-syntax) regarding
-configuration syntax.
-
-To change e.g. the text display duration your `stats.conf` may look like:
-
-    duration=5
-
-A more sophisticated example:
-
-    key_oneshot=e
-    key_toggle=E
-    plot_graphs=no
-    timing_total=yes
-    font=Arial
-    font_mono=Monospaced
-    font_size=8
-    font_color=262626
-    border_size=0.5
-
-Note: colors are given as hexadecimal values and use
-[ASS tag](http://docs.aegisub.org/3.2/ASS_Tags/#\c) order: BBGGRR (blue green red).
-
-
 F.A.Q.
 ======
 
@@ -68,8 +40,8 @@ There are no further/external dependencies.
 for your display's refresh rate. This is only relevant when using
 [display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or
 [interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation).  
-**Yellow**: your hardware needs more than 85% of the time to render/present/upload. 
-This is merely a warning.
+**Yellow**: your hardware needs more than 85% of the "available" time to 
+render/present/upload. This is merely a warning.
 
 Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
 Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
@@ -98,3 +70,30 @@ Note that `font` does not need to be a monospaced font.
 Long story short: there can't be text behind the graph drawings.
 [(Why)](https://github.com/libass/libass/issues/230)
 
+
+Customization
+=============
+You can configure various settings by creating a file called `stats.conf` in a folder
+named `lua-settings` within your mpv config folder (where your `mpv.conf` is in).
+Please refer to the `o` table within the script for possible option names and
+consult [mpv manual](http://mpv.io/manual/master/#config-syntax) regarding
+configuration syntax.
+
+To change e.g. the text display duration your `stats.conf` may look like:
+
+    duration=5
+
+A more sophisticated example:
+
+    key_oneshot=e
+    key_toggle=E
+    plot_graphs=no
+    timing_total=yes
+    font=Arial
+    font_mono=Monospaced
+    font_size=8
+    font_color=262626
+    border_size=0.5
+
+Note: colors are given as hexadecimal values and use
+[ASS tag](http://docs.aegisub.org/3.2/ASS_Tags/#\c) order: BBGGRR (blue green red).
