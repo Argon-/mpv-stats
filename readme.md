@@ -34,14 +34,25 @@ can be used with a minimum required mpv version of 0.9.3.
 
 There are no further/external dependencies.
 
+### How to get graphs?
+
+Graphs are enabled by default. 
+Please note that they are only shown when stats are toggled.
+
+Turn them off with `plot_graphs=no` (see [Customization](#customization)).
+
 ### Why are my timing values colored?
 
-**Red**: your hardware can't render/present/upload enough frames per second
-for your display's refresh rate. This is only relevant when using
-[display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or
-[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation).  
-**Yellow**: your hardware needs more than 85% of the "available" time to 
-render/present/upload. This is merely a warning.
+When using
+[display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or 
+[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation) 
+mpv has to show (render/present/upload) one frame every `1/display-fps` seconds.
+In case of a 60Hz display this means there's `1/60 = 0.016666` sec (`16666` μs) time
+per frame available.
+
+**Red**: your hardware needs more time to render/present/upload a frame than available.  
+**Yellow**: your hardware needs more than 85% of the available time. 
+This is merely a warning.
 
 Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
 Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
@@ -50,13 +61,6 @@ Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
 Yes, use `timing_total=yes` to add an additional line showing the values 
 summed up (see [Customization](#customization)).
-
-### How to get graphs?
-
-Graphs are enabled by default. 
-Please note that they are only shown when stats are toggled.
-
-Turn them off with `plot_graphs=no` (see [Customization](#customization)).
 
 ### The graph's position is jumping
 
