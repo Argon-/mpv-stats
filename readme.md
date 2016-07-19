@@ -38,7 +38,8 @@ There are no further/external dependencies.
 ### How to get graphs?
 
 Graphs are enabled by default. 
-Please note that they are only shown when stats are toggled.
+Please note that they are only shown when stats are toggled and that only the 
+`opengl` VO is exposing the necessary data.
 
 Turn them off with `plot_graphs=no` (see [Customization](#customization)).
 
