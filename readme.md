@@ -39,11 +39,11 @@ There are no further/external dependencies.
 
 Graphs are enabled by default.
 Please note that they are only shown when stats are toggled and that only the
-`opengl` VO is exposing the necessary data.
+`opengl` VO is exposing frame timing data.
 
-Turn them off with `plot_graphs=no` (see [Customization](#customization)).
+Turn graphs off with `plot_perfdata=no`, `plot_vsync_ratio=no` and `plot_vsync_jitter=no` (see [Customization](#customization)).
 
-### Why are my timing values colored?
+### Why are my frame timing values colored?
 
 **Red**: your hardware needs more time to render/present/upload a frame than available.  
 **Yellow**: your hardware needs more than 85% of the available time.
@@ -66,7 +66,7 @@ Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
 ### Can I get a sum of all three timing values?
 
-Yes, use `timing_total=yes` to add an additional line showing the values
+Yes, use `print_perfdata_total=yes` to add an additional line showing the values
 summed up (see [Customization](#customization)).
 
 ### The graph's position is jumping
@@ -98,8 +98,8 @@ A more sophisticated example:
 
     key_oneshot=e
     key_toggle=E
-    plot_graphs=no
-    timing_total=yes
+    plot_perfdata=no
+    print_perfdata_total=yes
     font=Arial
     font_mono=Monospaced
     font_size=8
