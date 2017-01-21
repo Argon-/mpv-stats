@@ -43,6 +43,11 @@ Please note that they are only shown when stats are toggled and that only the
 
 Turn graphs off with `plot_perfdata=no`, `plot_vsync_ratio=no` and `plot_vsync_jitter=no` (see [Customization](#customization)).
 
+### Can I get a sum of all three timing values?
+
+Yes, use `print_perfdata_total=yes` to add an additional line showing the values
+summed up (see [Customization](#customization)).
+
 ### Why are my frame timing values colored?
 
 **Red**: your hardware needs more time to render/present/upload a frame than available.  
@@ -63,11 +68,6 @@ just a very general indicator.
 
 Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
 Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
-
-### Can I get a sum of all three timing values?
-
-Yes, use `print_perfdata_total=yes` to add an additional line showing the values
-summed up (see [Customization](#customization)).
 
 ### The graph's position is jumping
 
@@ -98,11 +98,11 @@ A more sophisticated example:
 
     key_oneshot=e
     key_toggle=E
+    font_size=8
     plot_perfdata=no
     print_perfdata_total=yes
     font=Arial
     font_mono=Monospaced
-    font_size=8
     font_color=262626
     border_size=0.5
 
