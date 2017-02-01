@@ -27,7 +27,7 @@ By default *Source Sans Pro* is used as font.
 F.A.Q.
 ======
 
-### Requirements
+## Requirements
 
 This script requires mpv version **18.0** or above.  
 An older version (see [Releases](https://github.com/Argon-/mpv-stats/releases))
@@ -35,7 +35,7 @@ can be used with a minimum required mpv version of 0.9.3.
 
 There are no further/external dependencies.
 
-### How to get graphs?
+## How to get graphs?
 
 Graphs are enabled by default.
 Please note that they are only shown when stats are toggled and that only the
@@ -43,12 +43,12 @@ Please note that they are only shown when stats are toggled and that only the
 
 Turn graphs off with `plot_perfdata=no`, `plot_vsync_ratio=no` and `plot_vsync_jitter=no` (see [Customization](#customization)).
 
-### Can I get a sum of all three timing values?
+## Can I get a sum of all three timing values?
 
 Yes, use `print_perfdata_total=yes` to add an additional line showing the values
 summed up (see [Customization](#customization)).
 
-### Why are my frame timing values colored?
+## Why are my frame timing values colored?
 
 **Red**: your hardware needs more time to render/present/upload a frame than available.  
 **Yellow**: your hardware needs more than 85% of the available time.
@@ -69,14 +69,14 @@ just a very general indicator.
 Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
 Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
-### The graph's position is jumping
+## The graph's position is jumping
 
 Please use a font with monospaced digits.
 The default font does meet this requirement. Either download it (see [Usage](#usage))
 or set your own with `font_mono` (see [Customization](#customization)).  
 Note that `font` does not need to be a monospaced font.
 
-### Why does the layout change when showing graphs?
+## Why does the layout change when showing graphs?
 
 Long story short: there can't be text behind the graph drawings.
 [(Why)](https://github.com/libass/libass/issues/230)
