@@ -7,9 +7,9 @@ Display statistics for the currently played file in mpv.
 Requirements
 ============
 
-This script requires mpv version **0.18.0** or above.  
-An older version (see [Releases](https://github.com/Argon-/mpv-stats/releases))
-can be used with a minimum required mpv version of 0.9.3.
+The latest version of this script requires mpv version **0.26.0** or above (or at least [newer than this commit](https://github.com/mpv-player/mpv/commit/6a12b1fdc3c5c70fed15734c02f65005db2835cd)).  
+For older mpv versions please go to [Releases](https://github.com/Argon-/mpv-stats/releases).  
+The oldest supported version of mpv is 0.9.3.
 
 There are no further/external dependencies.
 
