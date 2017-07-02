@@ -26,8 +26,8 @@ bindings) and can therefore be invoked by pressing these keys.
 You can set different bindings either by [customizing](#customization) this script
 or by using the `script_binding` input command (in `input.conf`), e.g.:
 
-    e script-binding stats/display_stats
-    E script-binding stats/display_stats_toggle
+    e script-binding stats/display-stats
+    E script-binding stats/display-stats-toggle
 
 By default *Source Sans Pro* is used as font.
 [You can download it here](https://github.com/adobe-fonts/source-sans-pro).
