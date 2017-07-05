@@ -7,11 +7,9 @@ Display statistics for the currently played file in mpv.
 Requirements
 ============
 
-The latest version of this script requires mpv version **0.26.0** or above (or at least [newer than this commit](https://github.com/mpv-player/mpv/commit/6a12b1fdc3c5c70fed15734c02f65005db2835cd)).  
-For older mpv versions please go to [Releases](https://github.com/Argon-/mpv-stats/releases).  
+The latest version of this script requires mpv version **0.26.0** or above (or at least [newer than this 0.25 commit](https://github.com/mpv-player/mpv/commit/6a12b1fdc3c5c70fed15734c02f65005db2835cd)).  
+For older mpv versions please go to [Releases](https://github.com/Argon-/mpv-stats/releases).
 The oldest supported version of mpv is 0.9.3.
-
-There are no further/external dependencies.
 
 
 Usage
@@ -22,6 +20,15 @@ to autoload the script.
 The script is binding itself to `i` and `I` (however, not overriding your own
 bindings) and can therefore be invoked by pressing these keys.
 `i` will show the stats once while `I` will toggle them.
+
+While the stats are visible on screen, you can use numeric keys (1, 2, 3, ...)
+to switch between "pages" of stats. So far, the following pages are defined:
+
+1. stats (as usual)
+2. frame timings
+
+There will be more pages in the future.
+Also, expect some layout changes of current pages in the near future.
 
 You can set different bindings either by [customizing](#customization) this script
 or by using the `script_binding` input command (in `input.conf`), e.g.:
@@ -39,15 +46,12 @@ F.A.Q.
 ### How to get graphs?
 
 Graphs are enabled by default.
-Please note that they are only shown when stats are toggled and that only the
-`opengl` VO is exposing frame timing data.
+Due to their size, graphs for `Frame Timings` can only be shown on their dedicated page (2).
+For `VSync Ratio` and `VSync Jitter` they are only shown when stats are toggled (page 1)
+because they need to be recorded.
+Please note that only the `opengl` VO is exposing frame timing data.
 
 Turn graphs off with `plot_perfdata=no`, `plot_vsync_ratio=no` and `plot_vsync_jitter=no` (see [Customization](#customization)).
-
-### Can I get a sum of all three timing values?
-
-Yes, use `print_perfdata_total=yes` to add an additional line showing the values
-summed up (see [Customization](#customization)).
 
 ### Why are my frame timing values colored?
 
@@ -76,11 +80,6 @@ Please use a font with monospaced digits.
 The default font does meet this requirement. Either download it (see [Usage](#usage))
 or set your own with `font_mono` (see [Customization](#customization)).  
 Note that `font` does not need to be a monospaced font.
-
-### Why does the layout change when showing graphs?
-
-Long story short: there can't be text behind the graph drawings.
-[(Why)](https://github.com/libass/libass/issues/230)
 
 
 Customization
