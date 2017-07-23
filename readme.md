@@ -100,7 +100,6 @@ A more sophisticated example:
     key_toggle=E
     font_size=8
     plot_perfdata=no
-    print_perfdata_total=yes
     font=Arial
     font_mono=Monospaced
     font_color=262626
