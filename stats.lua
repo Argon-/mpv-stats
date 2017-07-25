@@ -472,6 +472,7 @@ local function add_video(s)
 
     append_property(s, "video-params/gamma", {prefix="Gamma:", suffix=hdrinfo})
     append_property(s, "packet-video-bitrate", {prefix="Bitrate:", suffix=" kbps"})
+    append_property(s, "vf", {prefix="Video Filters:"}, {["(empty)"]=true})
 end
 
 
@@ -484,6 +485,7 @@ local function add_audio(s)
     append_property(s, "audio-params/samplerate", {prefix="Sample Rate:", suffix=" Hz"})
     append_property(s, "audio-params/channel-count", {prefix="Channels:"})
     append_property(s, "packet-audio-bitrate", {prefix="Bitrate:", suffix=" kbps"})
+    append_property(s, "af", {prefix="Audio Filters:"}, {["(empty)"]=true})
 end
 
 
