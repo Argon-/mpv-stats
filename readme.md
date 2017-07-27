@@ -11,6 +11,11 @@ The latest version of this script requires mpv version **0.26.0** or above (or a
 For older mpv versions please go to [Releases](https://github.com/Argon-/mpv-stats/releases).
 The oldest supported version of mpv is 0.9.3.
 
+By default *Source Sans Pro* is used as font.
+[You can download it here](https://github.com/adobe-fonts/source-sans-pro).  
+If you want to use your own, please make sure your alternative choice supports
+as many font weights and monospaced digits, for an optimal visual experience.
+
 
 Usage
 =====
@@ -35,9 +40,6 @@ or by using the `script_binding` input command (in `input.conf`), e.g.:
 
     e script-binding stats/display-stats
     E script-binding stats/display-stats-toggle
-
-By default *Source Sans Pro* is used as font.
-[You can download it here](https://github.com/adobe-fonts/source-sans-pro).
 
 
 F.A.Q.
