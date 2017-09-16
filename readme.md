@@ -55,26 +55,6 @@ Please note that only the `opengl` VO is exposing frame timing data.
 
 Turn graphs off with `plot_perfdata=no`, `plot_vsync_ratio=no` and `plot_vsync_jitter=no` (see [Customization](#customization)).
 
-### Why are my frame timing values colored?
-
-**Red**: your hardware needs more time to render/present/upload a frame than available.  
-**Yellow**: your hardware needs more than 85% of the available time.
-This is merely a warning.
-
-When using
-[display-resample](https://mpv.io/manual/stable/#options-video-sync) and/or
-[interpolation](https://mpv.io/manual/stable/#video-output-drivers-interpolation)
-mpv has to show (render/present/upload) one frame every `1/display-fps` seconds.
-In case of a 60Hz display this means there's `1/60 = 0.016666` sec (`16666` μs) time
-per frame available.  
-Given [display-resample](https://mpv.io/manual/stable/#options-video-sync)
-is not used the video's FPS will be used for these calculations.
-Note that there are further parameters and coherences
-(depending on user configuration) influencing fluent playback and this is
-just a very general indicator.
-
-Turn it off by setting `timing_warning=no` (see [Customization](#customization)).  
-Use `timing_warning_th=0.85` to set a factor determining when to warn (yellow).
 
 ### The graph's position is jumping
 
