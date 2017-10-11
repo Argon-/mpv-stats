@@ -1,8 +1,19 @@
+Note
+====
+This script is now part of mpv.
+*You do not need to download it here* unless you want a specific or potentially
+more recent version. In this case, you should start mpv with
+`--load-stats-overlay=no` in order to disable the internal version.
+
+[There's also some documentation available](https://mpv.io/manual/master/#stats).
+
+
 mpv-stats
 =========
 Display statistics for the currently played file in mpv.
 
 ![Default](https://cloud.githubusercontent.com/assets/540920/16775632/85da9aa6-489c-11e6-8333-176755e64892.jpg)
+(screenshot is outdated)
 
 Requirements
 ============
