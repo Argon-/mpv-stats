@@ -12,8 +12,7 @@ mpv-stats
 =========
 Display statistics for the currently played file in mpv.
 
-![Default](https://cloud.githubusercontent.com/assets/540920/16775632/85da9aa6-489c-11e6-8333-176755e64892.jpg)
-(screenshot is outdated)
+![Default](https://i.imgur.com/k2SFRsn.png)
 
 Requirements
 ============
