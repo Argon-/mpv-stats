@@ -1,9 +1,12 @@
 Note
 ====
-This script is now part of mpv.
-*You do not need to download it here* unless you want a specific or potentially
-more recent version. In this case, you should start mpv with
-`--load-stats-overlay=no` in order to disable the internal version.
+This script is now part of mpv and, therefore, **not updated in this repo as of Nov 2018.** 
+For an up to date version please visit: https://github.com/mpv-player/mpv/blob/master/player/lua/stats.lua
+
+*You do not need to download it here* unless you want a specific version, e.g. 
+because you are using an old version of mpv (you shouldn't).  
+In such a case, start mpv with `--load-stats-overlay=no` in order to disable the 
+internal version and place your desired script version at the locations mentioned below.
 
 [There's also some documentation available](https://mpv.io/manual/master/#stats).
 
